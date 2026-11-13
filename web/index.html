@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Agent · 控制台</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Personal Agent</h1>
+      <p class="sub">只读监控优先 · 关键动作人工确认 · 全程可审计</p>
+    </div>
+    <div class="actions">
+      <button id="togglePause" class="ghost">暂停调度</button>
+      <button id="verifyAudit" class="ghost">校验审计链</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>新建目标</h2>
+      <form id="goalForm">
+        <label>用一句话描述
+          <input name="text" placeholder="盯着这款耳机，降到 800 以内就提醒我" required />
+        </label>
+        <div class="row">
+          <label>轮询间隔（秒）
+            <input name="interval_s" type="number" value="60" min="10" />
+          </label>
+          <label>数据地址（留空则用模拟执行器）
+            <input name="url" placeholder="https://example.com/item/123" />
+          </label>
+        </div>
+        <button type="submit">创建并立即执行一次</button>
+        <span id="goalMsg" class="msg"></span>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>任务</h2>
+      <table>
+        <thead><tr><th>任务</th><th>目标</th><th>状态</th><th>下次执行</th><th>成本</th><th></th></tr></thead>
+        <tbody id="tasks"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>待确认</h2>
+      <table>
+        <thead><tr><th>内容</th><th>金额</th><th>拒绝后果</th><th></th></tr></thead>
+        <tbody id="approvals"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>系统状态</h2>
+      <div id="metrics" class="metrics"></div>
+      <h3>事故</h3>
+      <ul id="incidents" class="plain"></ul>
+    </section>
+
+    <section class="card">
+      <h2>审计链（最近 20 条）</h2>
+      <table>
+        <thead><tr><th>#</th><th>时间</th><th>动作</th><th>主体</th><th>说明</th></tr></thead>
+        <tbody id="audit"></tbody>
+      </table>
+      <span id="auditMsg" class="msg"></span>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
