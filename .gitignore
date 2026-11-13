@@ -1,0 +1,15 @@
+# runtime state
+data/
+*.log
+*.snapshot.json
+
+# build output
+/bin/
+agentd
+*.test
+coverage.out
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/

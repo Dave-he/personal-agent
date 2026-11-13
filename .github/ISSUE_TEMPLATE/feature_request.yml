@@ -1,0 +1,38 @@
+name: 需求 / 改进建议
+description: 提出新场景、新适配器或架构改进
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 用户场景
+      description: 谁在什么情况下，想省掉哪一步
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 属于哪类改动
+      options:
+        - 平台适配器（executor）
+        - 规划器（planner）
+        - 校验规则（verifier）
+        - 权限与审计（policy / gateway）
+        - 接口与控制台
+        - 文档
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: 安全影响
+      description: 是否会引入写操作？是否需要新凭据？失败时的最坏后果是什么？
+    validations:
+      required: true
+  - type: checkboxes
+    id: redline
+    attributes:
+      label: 红线确认
+      options:
+        - label: 该方案不引入自动支付、自动下单、代发消息或签约能力
+          required: true
